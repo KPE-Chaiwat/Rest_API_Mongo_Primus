@@ -1,0 +1,25 @@
+{
+  "_id": {
+    "$oid": "66908c5a7cd75558361065d5"
+  },
+  "dataTopicMQTT": [
+    "/zungzeny/WebSocket/6/R515",
+    "/zungzeny/WebSocket/13/DB-M",
+    "/zungzeny/WebSocket/11/PB2",
+    "/zungzeny/WebSocket/11/PB8",
+    "/zungzeny/WebSocket/11/MDB",
+    "/zungzeny/WebSocket/6/R215",
+    "/zungzeny/WebSocket/999/total_V",
+    "/zungzeny/WebSocket/6/R604",
+    "/zungzeny/WebSocket/6/R704",
+    "/zungzeny/WebSocket/1/TTTBBBB1",
+    "/zungzeny/WebSocket/23/13",
+    "/zungzeny/WebSocket/999/Sam",
+    "/zungzeny/WebSocket/6/R203",
+    "/zungzeny/WebSocket/999/EAK",
+    "/zungzeny/WebSocket/6/R117",
+    "/zungzeny/WebSocket/6/#",
+    "#",
+    "tong"
+  ]
+}
