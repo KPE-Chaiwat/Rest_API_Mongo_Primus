@@ -75,6 +75,10 @@ app.post("/topics/save", async (req, res) => {
       result: result,
     });
   } finally {
+    // res.json({
+    //   status: " document inserted",
+    //   result: result,
+    // });
     // Close the MongoDB client connection
     //  await client.close();
   }
@@ -103,6 +107,7 @@ app.put("/topics/update", async (req, res) => {
     res.json({
       status: "updated",
       updated: result,
+      $position: 0,
     });
   } catch {
     res.json({
@@ -156,6 +161,7 @@ app.put("/topic/update", async (req, res) => {
     const updateDoc = {
       $push: {
         dataTopicMQTT: dataInsert,
+        $position: 0,
       },
     };
 
@@ -216,24 +222,24 @@ app.get("/dataReactFlow", async (req, res) => {
   }
 });
 
+app.post("/node", async (req, res) => {
+  res.json({ ok: "ok", msg: "Update Data ReactFlow Success" });
+});
+
+// POST method route
+
 app.post("/update/dataReactFlow/node", async (req, res) => {
-  // res.json({ ok: "ok", msg: req.body });
-  try {
-    const database = client.db("primus");
-    const topics = database.collection("dataReactFlow");
-
-    const query = { _id: new ObjectId("6695c885c6f9ea5f790c046e") };
-    const options = { node: Object };
-
-    const updateDoc = {
-      $set: {
-        node: req.body,
-      },
-    };
-    const result = await topics.updateOne(query, updateDoc, options);
-    res.json({ ok: "ok", msg: "Update Data ReactFlow Success" });
-  } finally {
-  }
+  const database = client.db("primus");
+  const topics = database.collection("dataReactFlow");
+  const query = { _id: new ObjectId("6695c885c6f9ea5f790c046e") };
+  const options = { node: Object };
+  const updateDoc = {
+    $set: {
+      node: req.body,
+    },
+  };
+  const result = await topics.updateOne(query, updateDoc, options);
+  res.json({ ok: "ok", msg: "Update Data ReactFlow Success" });
 });
 
 app.post("/update/dataReactFlow/Edge", async (req, res) => {
