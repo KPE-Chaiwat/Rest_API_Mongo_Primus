@@ -5,11 +5,13 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const port = 4000;
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "50mb" }));
+
 app.use(
   bodyParser.urlencoded({
     // to support URL-encoded bodies
-    limit: "150mb",
+
+    limit: "500mb",
     extended: true,
   })
 );
@@ -229,6 +231,7 @@ app.post("/node", async (req, res) => {
 // POST method route
 
 app.post("/update/dataReactFlow/node", async (req, res) => {
+  console.log(`uploadimage`);
   const database = client.db("primus");
   const topics = database.collection("dataReactFlow");
   const query = { _id: new ObjectId("6695c885c6f9ea5f790c046e") };
@@ -260,6 +263,12 @@ app.post("/update/dataReactFlow/Edge", async (req, res) => {
     res.json({ ok: "ok", msg: "Update Data ReactFlow Edge Success" });
   } finally {
   }
+});
+
+//** mock api */
+app.get("/fake", (req, res) => {
+  const datafake = { name: "tong", age: 12 };
+  res.json(datafake);
 });
 
 app.listen(port, () => {
