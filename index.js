@@ -231,7 +231,6 @@ app.post("/node", async (req, res) => {
 // POST method route
 
 app.post("/update/dataReactFlow/node", async (req, res) => {
-  console.log(`uploadimage`);
   const database = client.db("primus");
   const topics = database.collection("dataReactFlow");
   const query = { _id: new ObjectId("6695c885c6f9ea5f790c046e") };
